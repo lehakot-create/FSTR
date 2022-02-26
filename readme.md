@@ -1,4 +1,8 @@
-отправляем на адрес http://127.0.0.1:8000/api/v1/pereval/
+Размещено на Heroku: https://fstr2602.herokuapp.com/api/v1/pereval/
+
+отправляем на адрес https://fstr2602.herokuapp.com/api/v1/pereval/
+
+
 {"raw_data": {
         "pereval_id": "12211",
         "beautyTitle": "пер. ",
