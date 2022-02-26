@@ -1,2 +1,4 @@
 /app/tests.py
+__pychache__/
 *.pyc
+db.sqlite3
