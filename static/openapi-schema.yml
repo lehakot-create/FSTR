@@ -60,6 +60,8 @@ paths:
                type: array
                items:
                  $ref: '#/components/schemas/MountainPass_add'
+       '404':
+         description: The information of available mountain pass from database not found
      summary: Get information about the mountain pass by id
    put:
     operationId: updateMountainPass
@@ -86,6 +88,7 @@ paths:
                $ref: "#/components/schemas/MountainPass_add"
         '400':
           description: "Сhanges are prohibited"
+
 
 
  /api/v1/pereval/{id}/status/:
