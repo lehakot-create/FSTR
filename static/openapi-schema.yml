@@ -112,6 +112,8 @@ paths:
                type: array
                items:
                  $ref: '#/components/schemas/Status'
+       '404':
+         description: The information of available mountain pass from database not found
    summary: Get status the mountain pass by id
 
 
