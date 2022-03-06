@@ -1,5 +1,5 @@
-from rest_framework import generics, permissions
-from .models import *
+from rest_framework import generics
+from .models import Pereval_added
 from .serializers import *
 
 

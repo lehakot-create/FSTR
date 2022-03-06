@@ -1,0 +1,126 @@
+openapi: 3.0.2
+info:
+ title: 'FSTR'
+ version: '1.0'
+paths:
+ /api/v1/pereval/:
+   get:
+     operationId: listSchools
+     description: 'List of pereval'
+     parameters: []
+     responses:
+       '200':
+         content:
+           application/json:
+             schema:
+               type: array
+               items:
+                 $ref: '#/components/schemas/Pereval_add'
+         description: ''
+     tags:
+     - Get list pereval
+   post:
+     operationId: createPereval
+     description: 'temp description'
+     parameters: []
+     requestBody:
+       content:
+         application/json:
+           schema:
+             $ref: "#/components/schemas/Pereval_add"
+     responses:
+       '201':
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Pereval_add'
+         description: ''
+     tags:
+     - Add pereval
+
+components:
+ schemas:
+   Pereval_add:
+     type: object
+     properties:
+       id:
+         type: integer
+         readOnly: true
+       beautyTitle:
+         type: string
+         example: "пер."
+       title:
+         type: string
+         example: "Пхия"
+       other_titles:
+         type: string
+         example: "Триев"
+       connect:
+         type: string
+         example: ""
+       add_time:
+        type: string
+        example: "2021-09-22 13:18:13"
+       user:
+         type: object
+         properties:
+          id:
+           type: integer
+          email:
+           type: string
+           example: "email@example.com"
+          phone:
+           type: string
+           example: "8-987-654-43-21"
+          fam:
+           type: string
+           example: "Schwarzenegger"
+          name:
+           type: string
+           example: "Arnold"
+       coords:
+        type: object
+        properties:
+         latitude:
+          type: string
+          example: "45.3842"
+         longitude:
+          type: string
+          example: "7.1525"
+         height:
+          type: string
+          example: "1200"
+       type:
+        type: string
+        example: "pass"
+       level:
+        type: object
+        properties:
+         winter:
+          type: string
+          example: ""
+         summer:
+          type: string
+          example: "1A"
+         autumn:
+          type: string
+          example: "1A"
+         spring:
+          type: string
+          example: ""
+       images:
+        type: array
+        items:
+         $ref: "#/components/schemas/Images"
+
+     required:
+     - name
+   Images:
+    type: object
+    properties:
+     url:
+      type: string
+      example: http://..."
+     title:
+      type: string
+      example: "Подъём. Фото №1"

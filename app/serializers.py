@@ -1,3 +1,4 @@
+from django.core.serializers.json import DjangoJSONEncoder
 from rest_framework import serializers
 from .models import Pereval_added, Pereval_images
 
