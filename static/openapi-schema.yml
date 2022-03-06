@@ -5,43 +5,44 @@ info:
 paths:
  /api/v1/pereval/:
    get:
-     operationId: listPereval
-     description: 'List of pereval'
+     operationId: listMountainPasses
+     description: This method allows to get the list of mountain pass.<br/>
      parameters: []
      responses:
        '200':
+         description: The list of available mountain pass from database in JSON format.
          content:
            application/json:
              schema:
                type: array
                items:
-                 $ref: '#/components/schemas/Pereval_add'
-         description: ''
-     tags:
-     - Get list pereval
+                 $ref: '#/components/schemas/MountainPass_add'
+     summary: Get list of mountain pass
    post:
-     operationId: createPereval
-     description: ''
+     operationId: createMountainPass
+     description: This method allows to add information about new mountain pass.<br/>
      parameters: []
      requestBody:
        content:
          application/json:
            schema:
-             $ref: "#/components/schemas/Pereval_add"
+             $ref: "#/components/schemas/MountainPass_add"
      responses:
        '201':
+         description: The status code 201 means that mountain pass was successfully added to the database.
          content:
            application/json:
              schema:
-               $ref: '#/components/schemas/Pereval_add'
-         description: ''
-     tags:
-     - Add pereval
+               $ref: '#/components/schemas/MountainPass_add'
+       '400':
+         description: The error code means that provided data is incorrect
+     summary: Add information about new mountain pass
+
 
  /api/v1/pereval/{id}/:
    get:
-     operationId: onePereval
-     description: 'Pereval data'
+     operationId: getMountainPass
+     description: This method allows to get the information of mountain pass by id.<br/>
      parameters:
       - name: id
         in: path
@@ -52,19 +53,17 @@ paths:
          format: int64
      responses:
        '200':
+         description: The information of available mountain pass from database in JSON format.
          content:
            application/json:
              schema:
                type: array
                items:
-                 $ref: '#/components/schemas/Pereval_add'
-         description: ''
-     tags:
-      - One pereval
-
+                 $ref: '#/components/schemas/MountainPass_add'
+     summary: Get information about the mountain pass by id
    put:
-    operationId: UpdatePereval
-    description: 'Update pereval information'
+    operationId: updateMountainPass
+    description: This method allows to update information about the mountain pass by id
     parameters:
      - name: id
        in: path
@@ -77,21 +76,22 @@ paths:
         content:
          application/json:
            schema:
-             $ref: "#/components/schemas/Pereval_add"
+             $ref: "#/components/schemas/MountainPass_add"
     responses:
         '201':
-         content:
+          description: The status code 201 means that mountain pass was successfully updated to the database.
+          content:
            application/json:
              schema:
-               $ref: '#/components/schemas/Pereval_add'
-         description: ''
-    tags:
-        - Update pereval information
+               $ref: "#/components/schemas/MountainPass_add"
+        '400':
+          description: "Сhanges are prohibited"
+
 
  /api/v1/pereval/{id}/status/:
   get:
-   operationId: statusPereval
-   description: 'Status of pereval'
+   operationId: statusMountainPass
+   description: This method allows to get the status of mountain pass.<br/>
    parameters:
     - name: id
       in: path
@@ -102,20 +102,20 @@ paths:
        format: int64
    responses:
        '200':
+         description: The information about status mountain pass from database in JSON format.
          content:
            application/json:
              schema:
                type: array
                items:
                  $ref: '#/components/schemas/Status'
-         description: ''
-   tags:
-     - Get status pereval
+   summary: Get status the mountain pass by id
+
 
 
 components:
  schemas:
-   Pereval_add:
+   MountainPass_add:
      type: object
      properties:
        id:
