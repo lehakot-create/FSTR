@@ -5,7 +5,7 @@ info:
 paths:
  /api/v1/pereval/:
    get:
-     operationId: listSchools
+     operationId: listPereval
      description: 'List of pereval'
      parameters: []
      responses:
@@ -21,7 +21,7 @@ paths:
      - Get list pereval
    post:
      operationId: createPereval
-     description: 'temp description'
+     description: ''
      parameters: []
      requestBody:
        content:
@@ -37,6 +37,81 @@ paths:
          description: ''
      tags:
      - Add pereval
+
+ /api/v1/pereval/{id}/:
+   get:
+     operationId: onePereval
+     description: 'Pereval data'
+     parameters:
+      - name: id
+        in: path
+        description: ID record
+        required: true
+        schema:
+         type: integer
+         format: int64
+     responses:
+       '200':
+         content:
+           application/json:
+             schema:
+               type: array
+               items:
+                 $ref: '#/components/schemas/Pereval_add'
+         description: ''
+     tags:
+      - One pereval
+
+   put:
+    operationId: UpdatePereval
+    description: 'Update pereval information'
+    parameters:
+     - name: id
+       in: path
+       description: ID record
+       required: true
+       schema:
+        type: integer
+        format: int64
+    requestBody:
+        content:
+         application/json:
+           schema:
+             $ref: "#/components/schemas/Pereval_add"
+    responses:
+        '201':
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Pereval_add'
+         description: ''
+    tags:
+        - Update pereval information
+
+ /api/v1/pereval/{id}/status/:
+  get:
+   operationId: statusPereval
+   description: 'Status of pereval'
+   parameters:
+    - name: id
+      in: path
+      description: ID record
+      required: true
+      schema:
+       type: integer
+       format: int64
+   responses:
+       '200':
+         content:
+           application/json:
+             schema:
+               type: array
+               items:
+                 $ref: '#/components/schemas/Status'
+         description: ''
+   tags:
+     - Get status pereval
+
 
 components:
  schemas:
@@ -124,3 +199,11 @@ components:
      title:
       type: string
       example: "Подъём. Фото №1"
+   Status:
+    type: object
+    properties:
+     status:
+      type: string
+      example: 'new'
+
+
