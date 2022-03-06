@@ -88,8 +88,8 @@ paths:
                $ref: "#/components/schemas/MountainPass_add"
         '400':
           description: "Сhanges are prohibited"
-
-
+        '404':
+         description: The information of available mountain pass from database not found
 
  /api/v1/pereval/{id}/status/:
   get:
