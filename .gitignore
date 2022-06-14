@@ -6,3 +6,6 @@ tests.py
 app/migrations/*
 app/templates/*
 media/*
+.env
+.env.heroku
+/media/*
