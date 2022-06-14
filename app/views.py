@@ -8,6 +8,10 @@ from .serializers import *
 
 
 class PerevalCreate(generics.ListCreateAPIView):
+    """
+    Метод POST создает новую запись. Если пришла картинка - обрабатывает в функцией add_img_info
+    Метод GET возвращает все записи
+    """
     queryset = Pereval_added.objects.all()
     serializer_class = PerevalSerializer
     # permission_classes = [permissions.IsAuthenticated]
@@ -26,6 +30,9 @@ class PerevalCreate(generics.ListCreateAPIView):
 
 
 class PerevalStatus(views.APIView):
+    """
+    Возвращает статус записи
+    """
     def get_object(self, pk):
         try:
             return Pereval_added.objects.get(pk=pk)
@@ -40,6 +47,10 @@ class PerevalStatus(views.APIView):
 
 
 class PerevalDetail(views.APIView):
+    """
+    Метод GET возвращает запись по её id
+    Метод PUT обновляет запись в БД
+    """
     def get_object(self, pk):
         try:
             return Pereval_added.objects.get(pk=pk)
@@ -64,6 +75,9 @@ class PerevalDetail(views.APIView):
 
 
 class ImagesCreate(generics.ListCreateAPIView):
+    """
+    Сохраняет картинку в БД. Требование заказчика
+    """
     queryset = Pereval_images.objects.all()
     serializer_class = ImagesSerializer
 #     # permission_classes = [permissions.IsAuthenticated]
@@ -83,6 +97,9 @@ class ImagesCreate(generics.ListCreateAPIView):
 
 
 class ImagesDetail(views.APIView):
+    """
+    Возвращает картинку по id
+    """
     def get_object(self, pk):
         try:
             return Pereval_images.objects.get(pk=pk)
@@ -109,9 +126,7 @@ def add_img_info(data: collections.OrderedDict, many: bool = True):
             lst = []
             if objs:
                 for obj in objs:
-                    lst.append({'id': obj.id,
-                                'url': f'media/{obj.img}',
-                                'title': obj.title})
+                    lst.append({'id': obj.id, 'url': f'media/{obj.img}', 'title': obj.title})
             el.update(img=lst)
     else:
         objs = Pereval_images.objects.filter(id_pereval=data.get('id'))
